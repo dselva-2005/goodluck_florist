@@ -1,0 +1,12 @@
+
+{% if product %}
+
+    <form action="{% url "product:add_product_review" product.id %}" method="post" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">submit</button>
+    </form>
+
+{% else %}
+    <h2>Your review is submitted!</h2>
+{% endif %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+name :{{ product.name }}
+, description :{{ product.description}}
+, in_stock :{{ product.in_stock }}
+{% if reviews %}
+    {% for review in reviews %}
+        {{ review.comment|truncatewords:30 }}
+    {% endfor %}
+{% else %}
+    there no reviews
+{% endif %}
+{% include "product/review.html" %}
+{% endblock content %}
