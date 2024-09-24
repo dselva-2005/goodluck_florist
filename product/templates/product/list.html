@@ -7,4 +7,13 @@
     {% endfor %}
 </ul>
 
+{% if comments %}
+
+    {% for comment in comments %}
+        by {{ comment.user }}
+        : {{ comment.content|truncatewords:20 }}
+    {% endfor %}
+    
+{% endif %}
+
 {% endblock content %}

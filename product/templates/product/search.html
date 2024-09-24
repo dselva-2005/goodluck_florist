@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if results %}
+        {% with total_resultst=results.coun %}
+            <h2>found {{ total_results }} result{{ total_results|pluralize }}</h2>
+        {% endwith %}
+    {% endif %}
+    <form action="{% url "product:product_search" %}" method="get">
+        {{ form.as_p }}
+        <button type="submit">submit</button>
+    </form>
+
+    {% if results %}
+    {% for result in results  %}
+        <a href="{{ result.get_absolute_url }}">{{ result.name }}</a>
+    {% endfor %}
+    {% else %}
+    <p>No result found</p>
+    {% endif %}
+{% endblock content %}
+
